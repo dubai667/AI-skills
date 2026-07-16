@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="DubAI：AI Builders 资讯与主流 AI 工具入口。" />
+    <meta name="description" content="DubAI：AI Builders 资讯与主流 AI 工具导航。" />
     <title>DubAI</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -21,18 +21,13 @@
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
-        <p class="hero-kicker">DubAI 观察</p>
         <h1 id="hero-title">真正的 AI，不是让普通人学会更多工具，而是把行业里的技术门槛一点点抹平。</h1>
         <a class="hero-link" href="#news">开始浏览 <span aria-hidden="true">↓</span></a>
       </section>
 
       <section id="news" class="section news-section" aria-labelledby="news-title">
         <div class="section-intro">
-          <div>
-            <p class="eyebrow">01 / AI 信息流</p>
-            <h2 id="news-title">AI Builders 资讯</h2>
-          </div>
-          <p class="section-note">持续追踪 AI builders 的观点、产品更新、播客与文章。直接读取公开 feed，保持信息更新。</p>
+          <h2 id="news-title">AI Builders 资讯</h2>
         </div>
 
         <div class="feed-panel">
@@ -41,7 +36,6 @@
               <span class="live-dot" aria-hidden="true"></span>
               <span class="feed-label">Follow Builders</span>
             </div>
-            <div class="feed-status" id="feedStatus">正在读取 feed...</div>
           </div>
           <div class="feed-controls" aria-label="资讯筛选">
             <button class="feed-filter active" data-filter="all" type="button">全部</button>
@@ -59,40 +53,35 @@
 
       <section id="tools" class="section tools-section" aria-labelledby="tools-title">
         <div class="section-intro">
-          <div>
-            <p class="eyebrow">02 / 工具入口</p>
-            <h2 id="tools-title">AI 工具</h2>
-          </div>
-          <p class="section-note">不追求收集最多工具，只整理真正值得普通人了解和使用的 AI 软件。</p>
+          <h2 id="tools-title">AI 工具</h2>
         </div>
 
         <div class="tool-list">
-          <a class="tool-item" href="#" aria-label="豆包">
-            <span class="tool-logo logo-doubao">豆</span>
-            <span class="tool-name">豆包</span>
-            <span class="tool-type">通用 AI 助手</span>
-            <span class="tool-arrow" aria-hidden="true">↗</span>
-          </a>
           <a class="tool-item" href="#" aria-label="ChatGPT">
             <span class="tool-logo logo-chatgpt">◎</span>
             <span class="tool-name">ChatGPT</span>
-            <span class="tool-type">通用 AI 助手</span>
-            <span class="tool-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="tool-item" href="#" aria-label="Gemini">
+            <span class="tool-logo logo-gemini">Gemini</span>
+            <span class="tool-name">Gemini</span>
           </a>
           <a class="tool-item" href="#" aria-label="Claude">
-            <span class="tool-logo logo-claude">✦</span>
+            <span class="tool-logo logo-claude">AI</span>
             <span class="tool-name">Claude</span>
-            <span class="tool-type">写作与思考</span>
-            <span class="tool-arrow" aria-hidden="true">↗</span>
           </a>
-          <a class="tool-item" href="#" aria-label="即梦">
-            <span class="tool-logo logo-jimeng">即</span>
-            <span class="tool-name">即梦</span>
-            <span class="tool-type">图片与视频</span>
-            <span class="tool-arrow" aria-hidden="true">↗</span>
+          <a class="tool-item" href="#" aria-label="Mistral">
+            <span class="tool-logo logo-mistral">M</span>
+            <span class="tool-name">Mistral</span>
+          </a>
+          <a class="tool-item" href="#" aria-label="Llama">
+            <span class="tool-logo logo-llama">∞</span>
+            <span class="tool-name">Llama</span>
+          </a>
+          <a class="tool-item" href="#" aria-label="Grok xAI">
+            <span class="tool-logo logo-grok">/</span>
+            <span class="tool-name">Grok xAI</span>
           </a>
         </div>
-        <p class="tools-hint">更多工具正在整理中</p>
       </section>
     </main>
     <script src="./script.js"></script>

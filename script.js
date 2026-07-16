@@ -43,7 +43,6 @@ const state = {
 };
 
 const grid = document.querySelector("#feedGrid");
-const statusEl = document.querySelector("#feedStatus");
 const filterButtons = [...document.querySelectorAll(".feed-filter")];
 
 function truncate(text, max = 148) {
@@ -135,7 +134,7 @@ function render() {
           <p>${item.summary}</p>
           <div class="feed-card-bottom">
             <span>${item.source}</span>
-            <a href="${item.url || "#"}" target="_blank" rel="noopener noreferrer">原文</a>
+            <a href="${item.url || "#"}" target="_blank" rel="noopener noreferrer">原文 <span aria-hidden="true">→</span></a>
           </div>
         </article>
       `,
@@ -157,10 +156,8 @@ async function loadFeeds() {
 
     if (!items.length) throw new Error("No feed items");
     state.items = items;
-    statusEl.textContent = `已同步 ${items.length} 条，直接读取 GitHub feed，不消耗 AI token`;
   } catch (error) {
     state.items = fallbackItems;
-    statusEl.textContent = "远程 feed 暂时不可用，正在展示本地示例";
   }
   render();
 }
