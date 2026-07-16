@@ -96,25 +96,8 @@ a { color: inherit; text-decoration: none; }
 .tool-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .tool-item { display: flex; min-height: 156px; padding: 28px 18px 24px; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); transition: border-color 160ms ease, transform 160ms ease; }
 .tool-item:hover { border-color: #c9c9cf; transform: translateY(-2px); }
-.tool-logo { display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: 16px; border-radius: 50%; color: #fff; overflow: hidden; font-size: 13px; font-weight: 800; line-height: 1; }
-.logo-chatgpt, .logo-midjourney, .logo-kling, .logo-codex, .logo-cursor, .logo-copilot, .logo-trae, .logo-notion, .logo-modao { background: #111; }
-.logo-doubao { background: #3b6cff; }
-.logo-claude, .logo-claude-code { background: #d97757; }
-.logo-gemini { background: #4285f4; }
-.logo-deepseek { background: #2563eb; }
-.logo-qianwen { background: #6b46ff; }
-.logo-jimeng { background: #7c3aed; }
-.logo-liblib { background: #f97316; }
-.logo-xyq { background: #00a6ff; }
-.logo-hailuo { background: #00a3a3; }
-.logo-runway { background: #222; }
-.logo-pika { background: #ffd84d; color: #111; }
-.logo-kimi { background: #4169ff; }
-.logo-figma { background: #f24e1e; }
-.logo-canva { background: #00c4cc; }
-.logo-mastergo { background: #5546ff; }
-.logo-stitch { background: #34a853; }
-.logo-claude, .logo-gemini, .logo-codex, .logo-cursor, .logo-canva, .logo-stitch { font-size: 11px; }
+.tool-logo { display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: 16px; border-radius: 50%; overflow: hidden; }
+.tool-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .tool-name { font-size: 18px; font-weight: 500; text-align: center; line-height: 1.25; }
 
 @media (max-width: 760px) {
