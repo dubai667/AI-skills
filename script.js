@@ -99,7 +99,7 @@ function renderAvatar(item) {
 
 function getTranslateUrl(url) {
   if (!url) return "#";
-  return `https://translate.google.com/translate?sl=auto&tl=zh-CN&u=${encodeURIComponent(url)}`;
+  return `https://fanyi.baidu.com/#auto/zh/${encodeURIComponent(url)}`;
 }
 
 function setAvatar(target, item) {
