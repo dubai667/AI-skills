@@ -1,7 +1,7 @@
 const FEEDS = [
   {
     type: "x",
-    label: "X观点",
+    label: "𝕏",
     url: "https://api.github.com/repos/zarazhangrui/follow-builders/contents/feed-x.json?ref=main",
   },
   {
@@ -28,7 +28,7 @@ const fallbackItems = [
   },
   {
     type: "x",
-    label: "X观点",
+    label: "𝕏",
     source: "Swyx",
     title: "关于模型 introspection 与 rollouts 的讨论",
     summary: "来自 AI builder 的短观点，可作为“AI 大佬分享”栏目素材。",
@@ -74,7 +74,7 @@ function normalizeX(data) {
   return (data.x || []).flatMap((account) =>
     (account.tweets || []).map((tweet) => ({
       type: "x",
-      label: "X观点",
+      label: "𝕏",
       source: account.name || account.handle || "AI Builder",
       title: truncate(tweet.text, 72),
       summary: truncate(tweet.text, 170),
