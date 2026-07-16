@@ -89,12 +89,12 @@ a { color: inherit; text-decoration: none; }
 .skeleton p { width: 100%; height: 52px; margin-top: 18px; }
 
 .tool-categories { display: grid; gap: 54px; }
-.tool-category h3 { margin: 0 0 18px; font-size: 20px; line-height: 1.25; font-weight: 700; letter-spacing: 0; }
+.tool-category h3 { margin: 0 0 18px; font-size: 32px; line-height: 1.2; font-weight: 700; letter-spacing: 0; }
 .tool-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .tool-item { display: flex; min-height: 156px; padding: 28px 18px 24px; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); transition: border-color 160ms ease, transform 160ms ease; }
 .tool-item:hover { border-color: #c9c9cf; transform: translateY(-2px); }
-.tool-logo { display: grid; place-items: center; width: 72px; height: 72px; margin-bottom: 20px; border: 1px solid var(--line); border-radius: 50%; background: #fff; overflow: hidden; }
-.tool-logo img { width: 42px; height: 42px; object-fit: contain; }
+.tool-logo { display: grid; place-items: center; width: 72px; height: 72px; margin-bottom: 20px; border-radius: 50%; background: #fff; overflow: hidden; }
+.tool-logo img { width: 100%; height: 100%; object-fit: cover; }
 .tool-name { font-size: 18px; font-weight: 500; text-align: center; line-height: 1.25; }
 
 @media (max-width: 760px) {
@@ -110,8 +110,8 @@ a { color: inherit; text-decoration: none; }
   .feed-grid { grid-template-columns: 1fr; }
   .feed-card { min-height: 190px; }
   .tool-categories { gap: 42px; }
+  .tool-category h3 { font-size: 30px; }
   .tool-list { grid-template-columns: 1fr; gap: 16px; }
   .tool-item { min-height: 148px; }
   .tool-logo { width: 68px; height: 68px; margin-bottom: 18px; }
-  .tool-logo img { width: 38px; height: 38px; }
 }
