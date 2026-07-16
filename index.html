@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="DubAI：AI Builders 资讯与主流 AI 工具导航。" />
     <title>DubAI</title>
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=feed-modal-1" />
   </head>
   <body>
     <header class="site-header">
@@ -229,6 +229,27 @@
         </div>
       </section>
     </main>
-    <script src="./script.js?v=tool-tabs-2"></script>
+
+    <div class="feed-modal" id="feedModal" aria-hidden="true">
+      <div class="feed-modal-backdrop" data-modal-close></div>
+      <article class="feed-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="feedModalTitle">
+        <button class="feed-modal-close" type="button" data-modal-close aria-label="关闭">×</button>
+        <div class="feed-modal-meta">
+          <span class="feed-modal-avatar" id="feedModalAvatar"></span>
+          <div>
+            <div class="feed-modal-source" id="feedModalSource"></div>
+            <div class="feed-modal-time" id="feedModalTime"></div>
+          </div>
+        </div>
+        <span class="feed-modal-type" id="feedModalType"></span>
+        <h3 id="feedModalTitle"></h3>
+        <div class="feed-modal-body" id="feedModalBody"></div>
+        <div class="feed-modal-actions">
+          <a id="feedModalOriginal" href="#" target="_blank" rel="noopener noreferrer">原文 <span aria-hidden="true">→</span></a>
+          <a id="feedModalTranslate" href="#" target="_blank" rel="noopener noreferrer">中文查看 <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </div>
+    <script src="./script.js?v=feed-modal-1"></script>
   </body>
 </html>

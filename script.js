@@ -40,10 +40,20 @@ const fallbackItems = [
 const state = {
   items: [],
   filter: "all",
+  visibleItems: [],
 };
 
 const grid = document.querySelector("#feedGrid");
 const filterButtons = [...document.querySelectorAll(".feed-filter")];
+const modal = document.querySelector("#feedModal");
+const modalAvatar = document.querySelector("#feedModalAvatar");
+const modalSource = document.querySelector("#feedModalSource");
+const modalTime = document.querySelector("#feedModalTime");
+const modalType = document.querySelector("#feedModalType");
+const modalTitle = document.querySelector("#feedModalTitle");
+const modalBody = document.querySelector("#feedModalBody");
+const modalOriginal = document.querySelector("#feedModalOriginal");
+const modalTranslate = document.querySelector("#feedModalTranslate");
 
 function truncate(text, max = 148) {
   const clean = String(text || "").replace(/\s+/g, " ").trim();
@@ -73,7 +83,6 @@ function getInitials(value) {
 }
 
 function renderAvatar(item) {
-  const name = escapeHtml(item.source || "AI Builder");
   const fallback = escapeHtml(getInitials(item.source));
   const avatar = item.avatar ? escapeHtml(item.avatar) : "";
 
@@ -86,6 +95,23 @@ function renderAvatar(item) {
       <img src="${avatar}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentElement.textContent='${fallback}'" />
     </span>
   `;
+}
+
+function getTranslateUrl(url) {
+  if (!url) return "#";
+  return `https://translate.google.com/translate?sl=auto&tl=zh-CN&u=${encodeURIComponent(url)}`;
+}
+
+function setAvatar(target, item) {
+  const fallback = escapeHtml(getInitials(item.source));
+  const avatar = item.avatar ? escapeHtml(item.avatar) : "";
+  target.innerHTML = avatar
+    ? `<img src="${avatar}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentElement.textContent='${fallback}'" />`
+    : fallback;
+}
+
+function getDetailText(item) {
+  return item.fullText || item.summary || item.title || "暂无详情内容。";
 }
 
 function formatDate(value) {
@@ -117,6 +143,7 @@ function normalizeX(data) {
       avatar: account.handle ? `https://unavatar.io/x/${account.handle}` : "",
       title: truncate(tweet.text, 72),
       summary: truncate(tweet.text, 170),
+      fullText: tweet.text || "",
       url: tweet.url,
       date: tweet.createdAt,
       score: (tweet.likes || 0) + (tweet.retweets || 0) * 3 + (tweet.replies || 0) * 2,
@@ -132,6 +159,7 @@ function normalizePodcasts(data) {
     avatar: item.url ? `https://www.google.com/s2/favicons?domain=${getHost(item.url)}&sz=64` : "",
     title: item.title || "未命名播客",
     summary: truncate(item.transcript || item.description || "打开原链接查看完整节目内容。", 170),
+    fullText: item.transcript || item.description || "",
     url: item.url,
     date: item.publishedAt,
     score: 0,
@@ -146,6 +174,7 @@ function normalizeBlogs(data) {
     avatar: item.url || item.link ? `https://www.google.com/s2/favicons?domain=${getHost(item.url || item.link)}&sz=64` : "",
     title: item.title || "未命名文章",
     summary: truncate(item.summary || item.description || item.content || "打开原链接查看完整文章。", 170),
+    fullText: item.content || item.summary || item.description || "",
     url: item.url || item.link,
     date: item.publishedAt || item.date,
     score: 0,
@@ -157,6 +186,7 @@ function render() {
     .filter((item) => state.filter === "all" || item.type === state.filter)
     .sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0))
     .slice(0, 12);
+  state.visibleItems = list;
 
   if (!list.length) {
     grid.innerHTML = '<p class="feed-empty">当前分类暂无内容，稍后再试。</p>';
@@ -165,8 +195,8 @@ function render() {
 
   grid.innerHTML = list
     .map(
-      (item) => `
-        <article class="feed-card">
+      (item, index) => `
+        <article class="feed-card" tabindex="0" role="button" data-feed-index="${index}" aria-label="查看详情：${escapeHtml(item.title)}">
           <div class="feed-card-top">
             <span class="feed-type">${escapeHtml(item.label)}</span>
             <time>${escapeHtml(formatDate(item.date))}</time>
@@ -178,12 +208,38 @@ function render() {
               ${renderAvatar(item)}
               <span class="feed-source-name">${escapeHtml(item.source)}</span>
             </span>
-            <a href="${escapeHtml(item.url || "#")}" target="_blank" rel="noopener noreferrer">原文 <span aria-hidden="true">→</span></a>
+            <span class="feed-card-actions">
+              <a href="${escapeHtml(getTranslateUrl(item.url))}" target="_blank" rel="noopener noreferrer">中文 <span aria-hidden="true">→</span></a>
+              <a href="${escapeHtml(item.url || "#")}" target="_blank" rel="noopener noreferrer">原文 <span aria-hidden="true">→</span></a>
+            </span>
           </div>
         </article>
       `,
     )
     .join("");
+}
+
+function openFeedModal(item) {
+  if (!item || !modal) return;
+  setAvatar(modalAvatar, item);
+  modalSource.textContent = item.source || "AI Builder";
+  modalTime.textContent = formatDate(item.date);
+  modalType.textContent = item.label || "资讯";
+  modalTitle.textContent = item.title || "未命名内容";
+  modalBody.textContent = getDetailText(item);
+  modalOriginal.href = item.url || "#";
+  modalTranslate.href = getTranslateUrl(item.url);
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  modal.querySelector(".feed-modal-close").focus();
+}
+
+function closeFeedModal() {
+  if (!modal) return;
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
 }
 
 async function loadFeeds() {
@@ -216,16 +272,40 @@ filterButtons.forEach((button) => {
 });
 
 document.addEventListener("click", (event) => {
-  const button = event.target.closest(".tool-tab");
-  if (!button) return;
+  const closeButton = event.target.closest("[data-modal-close]");
+  if (closeButton) {
+    closeFeedModal();
+    return;
+  }
 
-  const selected = button.dataset.toolTab;
-  document.querySelectorAll(".tool-tab").forEach((item) => {
-    item.classList.toggle("active", item === button);
-  });
-  document.querySelectorAll(".tool-category").forEach((category) => {
-    category.classList.toggle("active", category.dataset.toolCategory === selected);
-  });
+  const button = event.target.closest(".tool-tab");
+  if (button) {
+    const selected = button.dataset.toolTab;
+    document.querySelectorAll(".tool-tab").forEach((item) => {
+      item.classList.toggle("active", item === button);
+    });
+    document.querySelectorAll(".tool-category").forEach((category) => {
+      category.classList.toggle("active", category.dataset.toolCategory === selected);
+    });
+    return;
+  }
+
+  const card = event.target.closest(".feed-card");
+  if (!card || event.target.closest("a")) return;
+  openFeedModal(state.visibleItems[Number(card.dataset.feedIndex)]);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeFeedModal();
+    return;
+  }
+
+  if ((event.key === "Enter" || event.key === " ") && event.target.closest(".feed-card")) {
+    event.preventDefault();
+    const card = event.target.closest(".feed-card");
+    openFeedModal(state.visibleItems[Number(card.dataset.feedIndex)]);
+  }
 });
 
 loadFeeds();
