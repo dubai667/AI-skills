@@ -44,6 +44,8 @@ const state = {
 
 const grid = document.querySelector("#feedGrid");
 const filterButtons = [...document.querySelectorAll(".feed-filter")];
+const toolTabs = [...document.querySelectorAll(".tool-tab")];
+const toolCategories = [...document.querySelectorAll(".tool-category")];
 
 function truncate(text, max = 148) {
   const clean = String(text || "").replace(/\s+/g, " ").trim();
@@ -168,6 +170,16 @@ filterButtons.forEach((button) => {
     button.classList.add("active");
     state.filter = button.dataset.filter || "all";
     render();
+  });
+});
+
+toolTabs.forEach((button) => {
+  button.addEventListener("click", () => {
+    const selected = button.dataset.toolTab;
+    toolTabs.forEach((item) => item.classList.toggle("active", item === button));
+    toolCategories.forEach((category) => {
+      category.classList.toggle("active", category.dataset.toolCategory === selected);
+    });
   });
 });
 
