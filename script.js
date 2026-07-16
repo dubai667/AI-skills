@@ -97,9 +97,13 @@ function renderAvatar(item) {
   `;
 }
 
-function getTranslateUrl(url) {
-  if (!url) return "#";
-  return `https://fanyi.baidu.com/#auto/zh/${encodeURIComponent(url)}`;
+function getTranslateUrl(item) {
+  const text = [`标题：${item.title || ""}`, `原文：${getDetailText(item)}`]
+    .join("\n\n")
+    .trim()
+    .slice(0, 1400);
+  if (!text) return "#";
+  return `https://fanyi.baidu.com/#auto/zh/${encodeURIComponent(text)}`;
 }
 
 function setAvatar(target, item) {
@@ -225,7 +229,7 @@ function openFeedModal(item) {
   modalTitle.textContent = item.title || "未命名内容";
   modalBody.textContent = getDetailText(item);
   modalOriginal.href = item.url || "#";
-  modalTranslate.href = getTranslateUrl(item.url);
+  modalTranslate.href = getTranslateUrl(item);
   modal.classList.add("open");
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
