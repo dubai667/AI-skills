@@ -75,11 +75,15 @@ a { color: inherit; text-decoration: none; }
 .feed-card { display: flex; min-height: 220px; padding: 18px; flex-direction: column; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); transition: border-color 160ms ease, transform 160ms ease; }
 .feed-card:hover { border-color: #bdbdb8; transform: translateY(-2px); }
 .feed-card-top, .feed-card-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.feed-card-top time, .feed-card-bottom span { color: var(--muted); font-size: 11px; }
+.feed-card-top time, .feed-source-name { color: var(--muted); font-size: 11px; }
 .feed-type { display: inline-flex; align-items: center; min-height: 22px; padding: 0 8px; border-radius: 999px; background: rgba(29, 92, 255, 0.1); color: var(--blue); font-size: 11px; font-weight: 800; }
 .feed-card h4 { margin: 16px 0 8px; font-size: 17px; line-height: 1.35; }
 .feed-card p { margin-bottom: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
 .feed-card-bottom { margin-top: auto; padding-top: 18px; }
+.feed-source { display: inline-flex; min-width: 0; align-items: center; gap: 7px; }
+.feed-avatar { display: grid; width: 22px; height: 22px; flex: 0 0 22px; place-items: center; overflow: hidden; border: 1px solid var(--line); border-radius: 50%; background: #f2f2f3; color: #555; font-size: 10px; font-weight: 800; line-height: 1; text-transform: uppercase; }
+.feed-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.feed-source-name { overflow: hidden; max-width: 150px; text-overflow: ellipsis; white-space: nowrap; }
 .feed-card-bottom a { color: var(--ink); font-size: 12px; font-weight: 800; }
 .feed-card-bottom a:hover { color: var(--blue); }
 .feed-empty { grid-column: 1 / -1; margin: 0; color: var(--muted); }
@@ -101,6 +105,7 @@ a { color: inherit; text-decoration: none; }
 .logo-bg-brand img { width: 100%; height: 100%; object-fit: cover; }
 .logo-bg-white { border: 1px solid var(--line); background: #fff; padding: 9px; }
 .logo-bg-white img { width: 100%; height: 100%; object-fit: contain; }
+.tool-logo-doubao { padding: 4px; }
 .tool-name { font-size: 18px; font-weight: 500; text-align: center; line-height: 1.25; }
 
 @media (max-width: 760px) {

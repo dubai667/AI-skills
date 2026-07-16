@@ -50,6 +50,44 @@ function truncate(text, max = 148) {
   return clean.length > max ? `${clean.slice(0, max)}...` : clean;
 }
 
+function escapeHtml(value) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function getHost(value) {
+  try {
+    return new URL(value).hostname;
+  } catch (error) {
+    return "";
+  }
+}
+
+function getInitials(value) {
+  const clean = String(value || "AI").trim();
+  return clean.slice(0, 2).toUpperCase();
+}
+
+function renderAvatar(item) {
+  const name = escapeHtml(item.source || "AI Builder");
+  const fallback = escapeHtml(getInitials(item.source));
+  const avatar = item.avatar ? escapeHtml(item.avatar) : "";
+
+  if (!avatar) {
+    return `<span class="feed-avatar" aria-hidden="true">${fallback}</span>`;
+  }
+
+  return `
+    <span class="feed-avatar" aria-hidden="true">
+      <img src="${avatar}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentElement.textContent='${fallback}'" />
+    </span>
+  `;
+}
+
 function formatDate(value) {
   if (!value) return "未标注时间";
   const date = new Date(value);
@@ -76,6 +114,7 @@ function normalizeX(data) {
       type: "x",
       label: "𝕏",
       source: account.name || account.handle || "AI Builder",
+      avatar: account.handle ? `https://unavatar.io/x/${account.handle}` : "",
       title: truncate(tweet.text, 72),
       summary: truncate(tweet.text, 170),
       url: tweet.url,
@@ -90,6 +129,7 @@ function normalizePodcasts(data) {
     type: "podcast",
     label: "播客",
     source: item.name || "Podcast",
+    avatar: item.url ? `https://www.google.com/s2/favicons?domain=${getHost(item.url)}&sz=64` : "",
     title: item.title || "未命名播客",
     summary: truncate(item.transcript || item.description || "打开原链接查看完整节目内容。", 170),
     url: item.url,
@@ -103,6 +143,7 @@ function normalizeBlogs(data) {
     type: "blog",
     label: "博客",
     source: item.source || item.name || item.site || "Blog",
+    avatar: item.url || item.link ? `https://www.google.com/s2/favicons?domain=${getHost(item.url || item.link)}&sz=64` : "",
     title: item.title || "未命名文章",
     summary: truncate(item.summary || item.description || item.content || "打开原链接查看完整文章。", 170),
     url: item.url || item.link,
@@ -127,14 +168,17 @@ function render() {
       (item) => `
         <article class="feed-card">
           <div class="feed-card-top">
-            <span class="feed-type">${item.label}</span>
-            <time>${formatDate(item.date)}</time>
+            <span class="feed-type">${escapeHtml(item.label)}</span>
+            <time>${escapeHtml(formatDate(item.date))}</time>
           </div>
-          <h4>${item.title}</h4>
-          <p>${item.summary}</p>
+          <h4>${escapeHtml(item.title)}</h4>
+          <p>${escapeHtml(item.summary)}</p>
           <div class="feed-card-bottom">
-            <span>${item.source}</span>
-            <a href="${item.url || "#"}" target="_blank" rel="noopener noreferrer">原文 <span aria-hidden="true">→</span></a>
+            <span class="feed-source">
+              ${renderAvatar(item)}
+              <span class="feed-source-name">${escapeHtml(item.source)}</span>
+            </span>
+            <a href="${escapeHtml(item.url || "#")}" target="_blank" rel="noopener noreferrer">原文 <span aria-hidden="true">→</span></a>
           </div>
         </article>
       `,
