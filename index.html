@@ -3,189 +3,96 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>杜白 AI 观察</title>
+    <meta name="description" content="杜白 AI 观察：AI Builders 资讯与主流 AI 工具入口。" />
+    <title>杜白 AI</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#">
+      <a class="brand" href="#top" aria-label="杜白 AI 首页">
         <span class="brand-mark">AI</span>
-        <span>杜白 AI 观察</span>
+        <span>杜白 AI</span>
       </a>
-      <nav class="nav">
-        <a href="#news">AI资讯</a>
-        <a href="#tools">AI工具</a>
-        <a href="#creator">自媒体资料</a>
+      <nav class="nav" aria-label="主导航">
+        <a href="#news">AI Builders</a>
+        <a href="#tools">AI 工具</a>
       </nav>
     </header>
 
-    <main>
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">给普通人的 AI 学习入口</p>
-          <h1>少一点焦虑，多一点可用的 AI 信息。</h1>
-          <p class="hero-text">
-            汇总国内外 AI 资讯、工具发布、AI 大佬观点和实用资料，也记录我用 AI 做自媒体的真实经验。
-          </p>
-          <div class="hero-actions">
-            <a class="primary-btn" href="#news">看今日重点</a>
-            <a class="secondary-btn" href="#creator">看我的复盘</a>
-          </div>
-        </div>
-        <div class="hero-panel">
-          <img src="./assets/dubai-ai-cover.png" alt="我是杜白 AI 自媒体视频画面" />
-          <div class="hero-panel-caption">
-            <strong>真实实践</strong>
-            <span>从 AI 工具使用、自媒体复盘，到普通人学习路径。</span>
-          </div>
-        </div>
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="hero-kicker">杜白 AI 观察</p>
+        <h1 id="hero-title">真正的 AI，不是让普通人学会更多工具，而是把行业里的技术门槛一点点抹平。</h1>
+        <a class="hero-link" href="#news">开始浏览 <span aria-hidden="true">↓</span></a>
       </section>
 
-      <section id="news" class="section">
-        <div class="section-head">
+      <section id="news" class="section news-section" aria-labelledby="news-title">
+        <div class="section-intro">
           <div>
-            <p class="eyebrow">板块一</p>
-            <h2>AI资讯</h2>
+            <p class="eyebrow">01 / AI 信息流</p>
+            <h2 id="news-title">AI Builders 资讯</h2>
           </div>
-          <p>按国内、国外、人物观点、视频发布会、公众号内容做分类，方便持续更新。</p>
-        </div>
-
-        <div class="news-layout">
-          <article class="feature-card">
-            <span class="tag">重点关注</span>
-            <h3>AI 发布会与功能更新</h3>
-            <p>记录 ChatGPT、Claude、Gemini、DeepSeek、豆包、可灵、即梦等产品的关键更新，提炼普通人真正用得上的变化。</p>
-            <div class="meta-row">
-              <span>功能发布</span>
-              <span>视频解读</span>
-              <span>使用影响</span>
-            </div>
-          </article>
-
-          <div class="news-grid">
-            <article class="mini-card accent-blue">
-              <span class="tag">国内</span>
-              <h3>国内 AI 动态</h3>
-              <p>大模型、AI 应用、智能硬件、内容平台政策和国产工具更新。</p>
-            </article>
-            <article class="mini-card accent-green">
-              <span class="tag">国外</span>
-              <h3>海外 AI 动态</h3>
-              <p>OpenAI、Anthropic、Google、Meta、Runway 等产品和研究进展。</p>
-            </article>
-            <article class="mini-card accent-red">
-              <span class="tag">人物</span>
-              <h3>AI 大佬分享</h3>
-              <p>整理创业者、研究员、产品负责人对 AI 趋势和能力边界的观点。</p>
-            </article>
-            <article class="mini-card accent-yellow">
-              <span class="tag">公众号</span>
-              <h3>深度文章精选</h3>
-              <p>收藏值得反复看的公众号文章，按学习、工具、商业、内容分类。</p>
-            </article>
-          </div>
+          <p class="section-note">持续追踪 AI builders 的观点、产品更新、播客与文章。直接读取公开 feed，保持信息更新。</p>
         </div>
 
         <div class="feed-panel">
           <div class="feed-head">
             <div>
-              <p class="eyebrow">GitHub 自动同步</p>
-              <h3>AI Builders 快讯</h3>
+              <span class="live-dot" aria-hidden="true"></span>
+              <span class="feed-label">Follow Builders</span>
             </div>
-            <div class="feed-status" id="feedStatus">正在读取 follow-builders feed...</div>
+            <div class="feed-status" id="feedStatus">正在读取 feed...</div>
           </div>
-          <div class="feed-controls">
+          <div class="feed-controls" aria-label="资讯筛选">
             <button class="feed-filter active" data-filter="all" type="button">全部</button>
             <button class="feed-filter" data-filter="x" type="button">X观点</button>
             <button class="feed-filter" data-filter="podcast" type="button">播客</button>
             <button class="feed-filter" data-filter="blog" type="button">博客</button>
           </div>
           <div class="feed-grid" id="feedGrid">
-            <article class="feed-card skeleton">
-              <span></span>
-              <strong></strong>
-              <p></p>
-            </article>
-            <article class="feed-card skeleton">
-              <span></span>
-              <strong></strong>
-              <p></p>
-            </article>
-            <article class="feed-card skeleton">
-              <span></span>
-              <strong></strong>
-              <p></p>
-            </article>
+            <article class="feed-card skeleton"><span></span><strong></strong><p></p></article>
+            <article class="feed-card skeleton"><span></span><strong></strong><p></p></article>
+            <article class="feed-card skeleton"><span></span><strong></strong><p></p></article>
           </div>
         </div>
       </section>
 
-      <section id="tools" class="section band">
-        <div class="section-head">
+      <section id="tools" class="section tools-section" aria-labelledby="tools-title">
+        <div class="section-intro">
           <div>
-            <p class="eyebrow">板块二</p>
-            <h2>AI工具列表</h2>
+            <p class="eyebrow">02 / 工具入口</p>
+            <h2 id="tools-title">AI 工具</h2>
           </div>
-          <p>不是堆工具，而是按“能解决什么问题”来整理。</p>
+          <p class="section-note">不追求收集最多工具，只整理真正值得普通人了解和使用的 AI 软件。</p>
         </div>
 
-        <div class="tool-grid">
-          <article class="tool-card">
-            <div class="tool-icon">文</div>
-            <h3>写作与选题</h3>
-            <p>用于写大纲、改标题、拆用户痛点、整理脚本结构。</p>
-            <a href="#">查看工具</a>
-          </article>
-          <article class="tool-card">
-            <div class="tool-icon">图</div>
-            <h3>图片与封面</h3>
-            <p>用于生成封面素材、视觉参考、产品图和内容配图。</p>
-            <a href="#">查看工具</a>
-          </article>
-          <article class="tool-card">
-            <div class="tool-icon">影</div>
-            <h3>视频与动画</h3>
-            <p>用于生成视频素材、数字人口播、字幕、转场和分镜。</p>
-            <a href="#">查看工具</a>
-          </article>
-          <article class="tool-card">
-            <div class="tool-icon">码</div>
-            <h3>编程与网站</h3>
-            <p>用于写代码、搭网站、做自动化、整理资料和构建小工具。</p>
-            <a href="#">查看工具</a>
-          </article>
+        <div class="tool-list">
+          <a class="tool-item" href="#" aria-label="豆包">
+            <span class="tool-logo logo-doubao">豆</span>
+            <span class="tool-name">豆包</span>
+            <span class="tool-type">通用 AI 助手</span>
+            <span class="tool-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="tool-item" href="#" aria-label="ChatGPT">
+            <span class="tool-logo logo-chatgpt">◎</span>
+            <span class="tool-name">ChatGPT</span>
+            <span class="tool-type">通用 AI 助手</span>
+            <span class="tool-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="tool-item" href="#" aria-label="Claude">
+            <span class="tool-logo logo-claude">✦</span>
+            <span class="tool-name">Claude</span>
+            <span class="tool-type">写作与思考</span>
+            <span class="tool-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="tool-item" href="#" aria-label="即梦">
+            <span class="tool-logo logo-jimeng">即</span>
+            <span class="tool-name">即梦</span>
+            <span class="tool-type">图片与视频</span>
+            <span class="tool-arrow" aria-hidden="true">↗</span>
+          </a>
         </div>
-      </section>
-
-      <section id="creator" class="section">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">板块三</p>
-            <h2>我的 AI 自媒体资料</h2>
-          </div>
-          <p>把你的失败复盘、口播稿、选题库、工具流程和文章沉淀成资料库。</p>
-        </div>
-
-        <div class="article-list">
-          <article class="article-card">
-            <span class="date">复盘</span>
-            <h3>我做 AI 自媒体两年，基本 0 收入</h3>
-            <p>不是没做出播放，而是没有把播放变成清晰账号资产。拆解赛道太散、爆款没接住、太追求单条质量三个问题。</p>
-            <a href="#">阅读全文</a>
-          </article>
-          <article class="article-card">
-            <span class="date">学习</span>
-            <h3>普通人如何学 AI，别被工具焦虑带着跑</h3>
-            <p>从互联网设计师的实际经验出发，讲普通人应该先找需求、描述需求、判断结果，而不是收藏一堆工具。</p>
-            <a href="#">阅读全文</a>
-          </article>
-          <article class="article-card">
-            <span class="date">资料</span>
-            <h3>AI 自媒体新手选题库</h3>
-            <p>按账号定位、工具使用、内容复盘、普通人学习 AI 四个方向整理可持续更新的选题。</p>
-            <a href="#">查看资料</a>
-          </article>
-        </div>
+        <p class="tools-hint">更多工具正在整理中</p>
       </section>
     </main>
     <script src="./script.js"></script>
