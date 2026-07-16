@@ -208,10 +208,7 @@ function render() {
               ${renderAvatar(item)}
               <span class="feed-source-name">${escapeHtml(item.source)}</span>
             </span>
-            <span class="feed-card-actions">
-              <a href="${escapeHtml(getTranslateUrl(item.url))}" target="_blank" rel="noopener noreferrer">中文 <span aria-hidden="true">→</span></a>
-              <a href="${escapeHtml(item.url || "#")}" target="_blank" rel="noopener noreferrer">原文 <span aria-hidden="true">→</span></a>
-            </span>
+            <a href="${escapeHtml(item.url || "#")}" target="_blank" rel="noopener noreferrer">原文 <span aria-hidden="true">→</span></a>
           </div>
         </article>
       `,
