@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 104 104" role="img" aria-label="Gemini">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 104 104" role="img" aria-label="gemini">
   <circle cx="52" cy="52" r="52" fill="#4285f4"/>
-  <text x="52" y="55" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800">Gemini</text>
+  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSI1NiIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZmZmZmZmIiBkPSJNMTEuMDQgMTkuMzJRMTIgMjEuNTEgMTIgMjRxMC0yLjQ5LjkzLTQuNjhxLjk2LTIuMTkgMi41OC0zLjgxdDMuODEtMi41NVEyMS41MSAxMiAyNCAxMnEtMi40OSAwLTQuNjgtLjkzYTEyLjMgMTIuMyAwIDAgMS0zLjgxLTIuNThhMTIuMyAxMi4zIDAgMCAxLTIuNTgtMy44MVExMiAyLjQ5IDEyIDBxMCAyLjQ5LS45NiA0LjY4cS0uOTMgMi4xOS0yLjU1IDMuODFhMTIuMyAxMi4zIDAgMCAxLTMuODEgMi41OFEyLjQ5IDEyIDAgMTJxMi40OSAwIDQuNjguOTZxMi4xOS45MyAzLjgxIDIuNTV0Mi41NSAzLjgxIi8+PC9zdmc+" x="24" y="24" width="56" height="56" preserveAspectRatio="xMidYMid meet"/>
 </svg>
