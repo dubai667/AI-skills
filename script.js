@@ -212,7 +212,7 @@ function render() {
               ${renderAvatar(item)}
               <span class="feed-source-name">${escapeHtml(item.source)}</span>
             </span>
-            <a href="${escapeHtml(item.url || "#")}" target="_blank" rel="noopener noreferrer">原文 <span aria-hidden="true">→</span></a>
+            <button class="feed-detail-button" type="button">详情 <span aria-hidden="true">→</span></button>
           </div>
         </article>
       `,
