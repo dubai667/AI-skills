@@ -86,7 +86,7 @@ a { color: inherit; text-decoration: none; }
 .feed-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .feed-source-name { overflow: hidden; max-width: 150px; text-overflow: ellipsis; white-space: nowrap; }
 .feed-card-bottom a, .feed-detail-button { color: var(--ink); font-size: 14px; font-weight: 800; }
-.feed-detail-button { padding: 0; border: 0; background: transparent; cursor: pointer; font: inherit; line-height: inherit; }
+.feed-detail-button { padding: 0; border: 0; background: transparent; cursor: pointer; font-family: inherit; line-height: inherit; }
 .feed-card-bottom a:hover, .feed-detail-button:hover { color: var(--blue); }
 .feed-empty { grid-column: 1 / -1; margin: 0; color: var(--muted); }
 .skeleton span, .skeleton strong, .skeleton p { display: block; border-radius: 999px; background: linear-gradient(90deg, #ededeb, #f7f7f5, #ededeb); }
