@@ -55,10 +55,11 @@ a { color: inherit; text-decoration: none; }
 }
 
 .hero h1 { max-width: 1080px; margin: 0; font-size: clamp(42px, 6vw, 82px); line-height: 1.08; font-weight: 700; letter-spacing: 0; }
-.hero-gradient { background: linear-gradient(90deg, var(--ink) 0%, var(--ink) 45%, #2f6bff 54%, #7867f2 70%, #bd7ae6 84%, #f08a7d 100%); background-size: 230% 100%; background-position: 0% 50%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: heroGradientReveal 2.4s ease 0.35s forwards; }
-@keyframes heroGradientReveal { to { background-position: 100% 50%; } }
+.hero-gradient { position: relative; display: inline-block; color: var(--ink); }
+.hero-gradient::after { content: attr(data-text); position: absolute; inset: 0; overflow: hidden; background: linear-gradient(90deg, #2f6bff 0%, #6e72f4 42%, #b77be8 68%, #f08a7d 100%); -webkit-background-clip: text; background-clip: text; color: transparent; clip-path: inset(0 100% 0 0); animation: heroGradientReveal 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards; }
+@keyframes heroGradientReveal { to { clip-path: inset(0 0 0 0); } }
 @media (prefers-reduced-motion: reduce) {
-  .hero-gradient { animation: none; background-position: 100% 50%; }
+  .hero-gradient::after { animation: none; clip-path: inset(0 0 0 0); }
 }
 .section { padding: 112px 8vw; }
 .news-section { background: var(--paper); }
