@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="DubAI：AI Builders 资讯与主流 AI 工具导航。" />
     <title>DubAI</title>
-    <link rel="stylesheet" href="./styles.css?v=feed-modal-7" />
+    <link rel="stylesheet" href="./styles.css?v=hero-motion-1" />
   </head>
   <body>
     <header class="site-header">
@@ -22,6 +22,20 @@
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
         <h1 id="hero-title">真正的 AI，不是让普通人学会更多工具，<span class="hero-gradient">而是把行业里的技术门槛一点点抹平。</span></h1>
+        <div class="threshold-motion" aria-hidden="true">
+          <svg viewBox="0 0 760 120" role="img">
+            <defs>
+              <linearGradient id="threshold-gradient" x1="20" x2="740" y1="0" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#2f6bff" />
+                <stop offset="48%" stop-color="#7867f2" />
+                <stop offset="100%" stop-color="#f08a7d" />
+              </linearGradient>
+            </defs>
+            <path class="threshold-path threshold-path-soft" pathLength="1" d="M20 66 C120 26 176 104 266 62 S426 34 512 68 S652 104 740 60" />
+            <path class="threshold-path threshold-path-main" stroke="url(#threshold-gradient)" pathLength="1" d="M20 66 C120 26 176 104 266 62 S426 34 512 68 S652 104 740 60" />
+            <path class="threshold-flat" pathLength="1" d="M20 66 L740 66" />
+          </svg>
+        </div>
       </section>
 
       <section id="news" class="section news-section" aria-labelledby="news-title">
