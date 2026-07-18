@@ -72,6 +72,7 @@ a { color: inherit; text-decoration: none; }
 .float-6 img { width: 28px; height: 28px; border-radius: 7px; }
 .float-7 { bottom: 24%; left: -44px; animation-duration: 17s; animation-delay: -5s; }
 .float-8 { top: 31%; right: -46px; animation-duration: 19s; animation-delay: -11s; }
+.float-9 { bottom: 18%; left: 27%; animation-duration: 15s; animation-delay: -12s; }
 @keyframes floatDrift {
   0%, 100% { transform: translate3d(0, 0, 0); }
   50% { transform: translate3d(0, -18px, 0); }
@@ -164,6 +165,7 @@ a { color: inherit; text-decoration: none; }
   .float-4 { bottom: 12%; left: 7%; }
   .float-2 { top: 18%; right: 27%; }
   .float-6 { bottom: 17%; left: calc(50% - 24px); width: 48px; height: 48px; }
+  .float-9 { bottom: 23%; left: 28%; }
   .section { padding: 76px 22px; }
   .section-intro { margin-bottom: 28px; }
   .section-intro h2 { font-size: 30px; }
