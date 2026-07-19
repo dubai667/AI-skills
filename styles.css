@@ -103,11 +103,10 @@ a { color: inherit; text-decoration: none; }
 .tool-item { display: flex; min-height: 156px; padding: 28px 18px 24px; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); transition: border-color 160ms ease, transform 160ms ease; }
 .tool-item:hover { border-color: #c9c9cf; transform: translateY(-2px); }
 .tool-logo { display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: 16px; border-radius: 50%; overflow: hidden; }
-.tool-logo img { display: block; }
-.logo-bg-brand img { width: 100%; height: 100%; object-fit: cover; }
-.logo-bg-white { border: 1px solid var(--line); background: #fff; padding: 9px; }
-.logo-bg-white img { width: 100%; height: 100%; object-fit: contain; }
-.tool-logo-doubao { padding: 4px; }
+.tool-logo img { display: block; width: 32px; height: 32px; object-fit: contain; }
+.logo-bg-white { border: 1px solid var(--line); background: #fff; }
+.tool-logo-doubao { padding: 0; }
+.tool-logo-doubao img { width: 42px; height: 42px; }
 .tool-name { font-size: 18px; font-weight: 500; text-align: center; line-height: 1.25; }
 
 .feed-modal { position: fixed; inset: 0; z-index: 30; display: none; align-items: center; justify-content: center; padding: 24px; }
